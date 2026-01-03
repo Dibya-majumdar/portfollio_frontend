@@ -50,7 +50,7 @@ const handleAddProject=async()=>{
         <>
 {/* "title","description","image","video","liveLink","github","usedTechs" */}
 
-<div className="bg-black  w-full pt-28 flex gap-10 pl-20 ">
+<div className="bg-black   w-full pt-28 flex gap-10 pl-20 ">
     <div id="input_data" className="w-1/2 bg-black  mx-10   ">
         <h1 className="text-white text-4xl font-bold mb-2">Add a new project</h1>
         <div className="text-2xl text-white ">Title</div>
@@ -77,8 +77,8 @@ const handleAddProject=async()=>{
          
         
     </div>
-    <div id="actual_video_card" className="w-1/2 bg-black ">
-    <div className="pt-16">
+    <div id="actual_video_card" className="w-1/2 bg-black">
+    <div className="pt-16 ">
            {
           
         // apiData.length!=0 && (

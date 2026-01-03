@@ -10,7 +10,7 @@ const ProjectsCards=({argument})=>{
     const navigate=useNavigate();
     return(
         <>
-        <div id="container" className="transition  hover:shadow-[0_0_30px_rgba(59,130,246,0.8)] w-[29rem] h-[100%]  bg-[#0F1215] rounded-[2rem] pt-2 pl-2 pr-2 border border-gray-800 outline-none  ">
+        <div id="container" className="transition  hover:shadow-[0_0_30px_rgba(59,130,246,0.8)]w-full xsm:w-[29rem] h-[100%]  bg-[#0F1215] rounded-[2rem] pt-2 pl-2 pr-2 border border-gray-800 outline-none  ">
             <div className="w-full bg-black bg-cover rounded-3xl overflow-hidden"><img className=" object-top object-fill w-full h-60  rounded-3xl" src={argument.image}></img></div>
             <div className="text-3xl font-bold text-white p-2">{argument.title}</div>
             <div className="text-md  text-gray-500 pl-2 pr-2 pb-2">{argument.description}</div>

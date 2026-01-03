@@ -7,11 +7,11 @@ const Skills=()=>{
     return(
         <>
          <div id="skill" className="w-full h-full bg-black pt-28 ">       {/*pt-28 */}
-            <div className="text-center flex gap-3 justify-center">
-                <div  className="text-white text-7xl font-serif">Technical</div><div className=" bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text text-7xl font-bold font-serif">Skills</div>
+            <div className="text-center flex flex-wrap gap-3 justify-center">
+                <div  className="text-white  text-5xl sm:text-5xl md:text-7xl font-serif">Technical</div><div className=" bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text  text-5xl sm:text-5xl md:text-7xl font-bold font-serif">Skills</div>
                 
             </div>
-            <div className="text-center text-gray-400 text-2xl mt-3"><p>A showcase of my work spanning full-stack development <br></br> web and AI</p></div>
+            <div className="text-center text-gray-400 text-sm sm:text-lg md:text-2xl mt-3"><p>A showcase of my work spanning full-stack development <br></br> web and AI</p></div>
               <div className=" bg-black flex gap-5 flex-wrap justify-center ">
                    <SkillsCards dibya={{techStack:"Frontend",percentage:95,CircleColor:"#00eaff",skill0:"React js",skill1:"Html",skill2:"css",skill3:"js",level1:70,level2:70,level3:90}}/>
                    <SkillsCards dibya={{techStack:"BackEnd",percentage:87,CircleColor:"#A655F7",skill0:"Node js",skill1:"ExpressJs",skill2:"Rest Apis",skill3:"Socket.io",level1:70,level2:70,level3:90}}/>
@@ -21,11 +21,11 @@ const Skills=()=>{
             </div>
         </div>
           <div className="text-center  justify-center bg-black   flex-wrap pt-5">
-             <div className="flex justify-center gap-5 pb-2">
-                  <div  className="text-white text-5xl font-serif flex justify-center">Tech</div><div className=" bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text text-5xl font-bold font-serif">Arsenal</div>
+             <div className="flex justify-center gap-2 md:gap-5 pb-2">
+                  <div  className="text-white  text-2xl sm:text-3xl md:text-5xl font-serif flex justify-center">Tech</div><div className=" bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text text-2xl sm:text-3xl md:text-5xl font-bold font-serif">Arsenal</div>
             </div>
         
-          <div className="flex gap-2   flex-wrap  justify-center px-60 ">
+          <div className="flex gap-2   flex-wrap  justify-center ">
           <SkillImgTagUser props={{"img":"https://cdn-icons-png.flaticon.com/512/5968/5968267.png","name":"Html"}}/>
           <SkillImgTagUser props={{"img":"https://cdn-icons-png.flaticon.com/512/5968/5968242.png","name":"css"}}/>
           <SkillImgTagUser props={{"img":"https://static.vecteezy.com/system/resources/previews/027/127/463/non_2x/javascript-logo-javascript-icon-transparent-free-png.png","name":"js"}}/>

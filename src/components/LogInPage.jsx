@@ -56,7 +56,7 @@ setErrorShow(backendData.data.message);
         <>
         {/* //absolute  top-52 left-52  */}
      
-                   <div className="flex justify-center items-center">
+                   <div className="flex justify-center h-screen md:h-full items-center">
         <div className="w-[500px]  bg-gradient-to-r from-cyan-400 to-purple-500  rounded-2xl cursor-pointer  mt-5">       
             <div className="flex justify-between">
                  <p className="p-10 text-4xl font-bold">{signUp==true?"sign up" :"LogIn"} </p>

@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xsm: "450px", // 👈 your custom breakpoint
+      },
+    },
   },
   plugins: [
     require("tailwind-scrollbar"),
