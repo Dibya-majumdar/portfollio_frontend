@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BASE_URL } from "../utils/constant";
 
 const Projects=()=>{
     const [projectData,setProjectData]=useState([]);
@@ -88,7 +89,7 @@ useGSAP(
 
     const callingApi=async()=>{
         try{
-            const jsonData=await axios.get("http://localhost:3000/projectsWithoutAuth");
+            const jsonData=await axios.get(`${BASE_URL}projectsWithoutAuth`);
 console.log(jsonData.data);
 setProjectData(jsonData.data);
         }catch(err){

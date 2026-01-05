@@ -3,6 +3,7 @@ import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logInUser } from "../Stores/logInSlice";
+import { BASE_URL } from "../utils/constant";
 
 
 const LogInPage=()=>{
@@ -22,7 +23,7 @@ const dispatch=useDispatch()
 const handleLogin=async()=>{
     console.log(mail);
     console.log(pass)
-const backendData=await axios.post("http://localhost:3000/admin/login",{emailId:mail,password:pass},{withCredentials:true});
+const backendData=await axios.post(`${BASE_URL}admin/login`,{emailId:mail,password:pass},{withCredentials:true});
 console.log(backendData.data.message);
 console.log(backendData);
 setApiData(backendData.data.message);
@@ -38,7 +39,7 @@ const handleSignUp=async()=>{
     try{
         console.log(mail);
     console.log(pass)
-const backendData=await axios.post("http://localhost:3000/admin/signup",{emailId:mail,password:pass,key:adminKey});
+const backendData=await axios.post(`${BASE_URL}admin/signup`,{emailId:mail,password:pass,key:adminKey});
 console.log(backendData.data.message);
 setApiData(backendData.data.message);
 setErrorShow(backendData.data.message);

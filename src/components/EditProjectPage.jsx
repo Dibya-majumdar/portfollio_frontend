@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import ProjectsCards from "../Cards/ProjectsCards";
+import { BASE_URL } from "../utils/constant";
 
 // "title","description","image","video","liveLink","github","usedTechs"
 
@@ -50,7 +51,7 @@ const handleEditProject=async()=>{
     try{
        
         console.log("clicked");
-         const data=await axios.patch(`http://localhost:3000/projects/${id}`,{    title,
+         const data=await axios.patch(`${BASE_URL}projects/${id}`,{    title,
         description,
         image,
         video,

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import ProjectsCards from "../Cards/ProjectsCards";
+import { BASE_URL } from "../utils/constant";
 
 
 
@@ -30,7 +31,7 @@ const AdminAddProject=()=>{
 const handleAddProject=async()=>{
     try{
         console.log("clicked");
-         const data=await axios.post(`http://localhost:3000/projects`,{    title,
+         const data=await axios.post(`${BASE_URL}projects`,{    title,
         description,
         image,
         video,

@@ -15,6 +15,7 @@ import EditProjectPage from './components/EditProjectPage';
 import AdminAddProject from './components/AdminAddProjects';
 import Journey from './components/Journey';
 import  Video from './components/Video';
+import AdminMessageFromUsers from './components/AdminMessageFromUsers';
 
 
 
@@ -41,6 +42,7 @@ function App() {
  <Route path='/admin/works/projects/:id' element={ <EditProjectPage/>}> </Route>
  <Route path='/admin/works/AddProjects' element={ <AdminAddProject/>}> </Route>
  <Route path='/projects/video/:id/:pid' element={ <Video/>}> </Route>
+ <Route path='/admin/works/message' element={ <AdminMessageFromUsers/>}> </Route>
     </Route>
    </Routes>
    </BrowserRouter> 

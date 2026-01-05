@@ -4,6 +4,7 @@ import ProjectsCards from "../Cards/ProjectsCards";
 import { Link, useNavigate } from "react-router-dom";
 import deleteImge from "../delete.png";
 import tabImg from "../tab.png";
+import { BASE_URL } from "../utils/constant";
 
 const AdminWork=()=>{
     const [deleteP,setDeleteP]=useState(false);
@@ -25,16 +26,21 @@ callingApi();
 },[deleteP])
 const handleDelete=async(id)=>{
     console.log("deleted");
-    const data=await axios.delete(`http://localhost:3000/projects/${id}`,{withCredentials:true})
+    const data=await axios.delete(`${BASE_URL}projects/${id}`,{withCredentials:true})
     setDeleteP(!deleteP);
 }
     return(
         <>
        
          <div className=" bg-black pt-28 ">
+            <div className="flex gap-4 h-full flex-wrap">
                <div className=" justify-between ml-0 md:ml-20 sm:w-[29rem] h-[5rem] pl-5  bg-[#0F1215] rounded-[2rem] text-2xl  pr-2 border border-gray-800 outline-none text-white flex">
              <div className="pt-5  ">Add A new Project</div>
-           <Link to={"/admin/works/AddProjects"} > <img src={tabImg} alt="addProject" className="w-14 h-14 cursor-pointer mt-3 mr-5" /></Link> </div>
+           <Link to={"/admin/works/AddProjects"} > <img src={tabImg} alt="addProject" className="w-14 h-14 cursor-pointer mt-3 mr-5" /></Link>
+           
+            </div>
+             <Link to={"/admin/works/message"} ><div className="text-white text-2xl bg-[#0F1215] flex justify-center items-center px-5 rounded-[2rem] h-[5rem] border border-gray-800">usersMessages</div></Link> 
+          </div>
              <h1 className="text-3xl text-white font-bold md:ml-20 mt-2">Existing Projects</h1>
              <div className="bg-black flex gap-5 pb-36  flex-wrap justify-center   pt-2 ">
                                  { projectData.length!=0 &&(

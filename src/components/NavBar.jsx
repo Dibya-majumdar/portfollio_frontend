@@ -169,6 +169,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BASE_URL } from "../utils/constant";
 
 const NavBar = () => {
 //----------------------------------gsap
@@ -256,7 +257,7 @@ gsap.fromTo(
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/logout",
+        `${BASE_URL}logout`,
         {},
         { withCredentials: true }
       );

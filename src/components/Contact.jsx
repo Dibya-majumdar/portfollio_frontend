@@ -1,13 +1,15 @@
 import ProjectsCards from "../Cards/ProjectsCards";
-import { Mail } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 import { MapPin } from 'lucide-react';
 import { Github } from 'lucide-react';
 import { Linkedin } from 'lucide-react';
 import { Link } from "react-router-dom";
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import axios from "axios";
+import { BASE_URL } from "../utils/constant";
 
 const Contact=()=>{
 //----------------------------------gsap
@@ -101,11 +103,50 @@ gsap.fromTo(
 },{ scope: container });  //,{ scope: container }
 //--------------------------------------------gsap
 
+const[name,setName]=useState("");
+const[email,setEmail]=useState("");
+const[textarea,setTextArea]=useState("");
+const[toast,setToast]=useState(false);
+const[error,setError]=useState(false);
 
+const handleMessage=async()=>{
+  try{
+    if(name.trim()==""){
+      setError("Enter your name pls !");
+      return;
+    }else if(email.trim()==""|| !email.endsWith("@gmail.com")){
+      setError("Enter a valid gmail pls !")
+      return
+    }else if(textarea.trim()==""){
+       setError("Enter your message pls !");
+       return;
+    }
+    const data= await axios.post(`${BASE_URL}visitor/message`,{userName:name,emailId:email,message:textarea},{withCredentials:true});
+    console.log(data);
+    setName("");
+    setEmail("");
+    setTextArea("");
+    setToast(true);
+    setTimeout(()=>{
+      setToast(false);
+    },2000)
+  }catch(err){
+    console.log(err.message)
+  }
+}
 
+//gamail
+const openGmail = () => {
+  window.location.href =
+    "mailto:majumdardibya700@gmail.com";
+};
 
     return(
         <>
+         {toast && <div className=" fixed px-10 py-5 top-28 text-white bg-black sm:left-[40%] rounded-xl border border-gray-800"> 
+                          <div className="relative text-white font-bold">Message sent !</div>
+                          <div className="relative text-white">Thank you for reaching out. i will get back to you soon </div>
+                        </div>}
         <div ref={container}>
         <div  id="contact"  className="w-full  bg-black pt-28 pb-20  ">       {/*pt-28 */}
             <div id="contactText" className="text-center flex gap-3 justify-center flex-wrap">
@@ -129,24 +170,29 @@ gsap.fromTo(
                      <div className="flex gap-5 mt-5 ">
                    <Link to={"https://github.com/Dibya-majumdar"}>  <div className="bg-[#22222A] rounded-full w-16 h-16 mb-3 flex justify-center items-center "><Github className="text-white" size={38}/></div></Link>
                    <Link to={"https://www.linkedin.com/in/dibya-majumdar-3879102a2/"} >  <div className="bg-[#22222A] rounded-full w-16 h-16 mb-3 flex justify-center items-center"><Linkedin className="text-white" size={38}/></div></Link>
-                      <div className="bg-[#22222A] rounded-full w-16 h-16 mb-3 flex justify-center items-center"><Mail className="text-white" size={38}/></div>
+                      <div className="bg-[#22222A] rounded-full w-16 h-16 mb-3 flex justify-center items-center" onClick={openGmail}><Mail className="text-white" size={38}/></div>
                      </div>
 
                      </div>
+                        
                      <div id="box2" className="bg-[#0F0F11] w-full md:w-1/2 ml-0 md:m-5 mr-28 h-auto p-10 rounded-2xl border border-gray-800">
                         <div className="mt-2">
                             <p className="font-bold text-white text-xl mb-3">Name</p>
-                            <input className="h-16 outline-none w-full pl-5 placeholder:text-xl rounded-2xl bg-[#22222A]" type="text" placeholder="Enter your name"/>
+                            <input className="text-white h-16 outline-none w-full pl-5 placeholder:text-xl rounded-2xl bg-[#22222A]" type="text" placeholder="Enter your name" onMouseEnter={()=>setError("")} value={name} onChange={(e)=>setName(e.target.value)}/>
                         </div>
                         <div className="mt-2">
                             <p className="font-bold text-white text-xl mb-3 ">Email</p>
-                            <input className="h-16 outline-none w-full pl-5 placeholder:text-xl rounded-2xl bg-[#22222A]" type="text" placeholder="your@email.com"/>
+                            <input className="text-white h-16 outline-none w-full pl-5 placeholder:text-xl rounded-2xl bg-[#22222A]" type="text" placeholder="your@gmail.com" onMouseEnter={()=>setError("")} value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         </div>
                         <div className="mt-2">
                             <p className=" font-bold text-white text-xl ">Message</p>
-                            <textarea className="bg-[#22222A] h-40 px-3 outline-none resize-none w-full pl-5 placeholder:text-xl place-content-start mt-2 rounded-2xl" type="text" placeholder="Tell me about your project"/>
+                            <textarea className="p-2 text-white bg-[#22222A] h-40 px-3 outline-none resize-none w-full pl-5 placeholder:text-xl place-content-start mt-2 rounded-2xl" onMouseEnter={()=>setError("")} type="text" placeholder="Tell me about your project" value={textarea} onChange={(e)=>setTextArea(e.target.value)} />
                         </div>
-                        <div className="mt-12 bg-gradient-to-r from-cyan-400 to-purple-500 h-20 w-full text-center flex items-center justify-center rounded-full text-black text-lg xsm:text-2xl sm:text-2xl md:text-3xl font-bold">Send Message</div>
+                      
+                          
+                         {error!="" && <div className="text-red-500">{error}</div>}
+
+                        <div className="mt-12 bg-gradient-to-r from-cyan-400 to-purple-500 h-20 w-full  flex items-center justify-center  rounded-full text-black text-lg xsm:text-2xl sm:text-2xl md:text-3xl font-bold hover:scale-105 hover:shadow-2xl  " onClick={handleMessage}>Send Message <Send size={52} className="p-2" /></div>
                      </div>
             </div>
         </div>

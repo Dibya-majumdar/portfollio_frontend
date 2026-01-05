@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import CommentCard from "../Cards/CommentCard";
 import { Github, SquareArrowOutUpRight, ThumbsDown, ThumbsUp } from "lucide-react";
+import { BASE_URL } from "../utils/constant";
 const Video=()=>{
 const[like,setLike]=useState(false);
 const[disLike,setDisLike]=useState(false);
@@ -44,7 +45,7 @@ const handlecomment=async()=>{
 
 const videoFunc=async()=>{
     try{
-        const data=await axios.get(`http://localhost:3000/video/${id}` ,{withCredentials:true});
+        const data=await axios.get(`${BASE_URL}video/${id}` ,{withCredentials:true});
 // console.log(data.data.Comments);
 setVideoUrl(data?.data?.videoUrl);
 setCommentsArray(data?.data?.Comments);
