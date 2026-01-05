@@ -165,8 +165,72 @@ import axios from "axios";
 import { Menu, X } from "lucide-react";
 
 import { logOutUser } from "../Stores/logInSlice";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const NavBar = () => {
+//----------------------------------gsap
+ gsap.registerPlugin(ScrollTrigger);
+const container = useRef();
+useGSAP(() => {
+	//gsap code here...
+gsap.fromTo(
+      "#dibya",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        delay:0.1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.2,
+        clearProps: "all", 
+      //   scrollTrigger: {
+      //   trigger: "#getText",
+      //   start: "top 60%",
+      //   toggleActions: "play none none reverse",
+      //   // markers:true
+      // },
+        
+      }
+    );
+gsap.fromTo(
+      "#navText",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay:0.4,
+        ease: "power3.out",
+        stagger: 0.2,
+        clearProps: "all", 
+       }
+    );
+gsap.fromTo(
+      "#hamburger",
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        delay:0.7,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.2,
+        clearProps: "all", 
+       }
+    );
+
+     
+	
+ ScrollTrigger.refresh();
+},{ scope: container });  //,{ scope: container }
+//--------------------------------------------gsap
+
+
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -207,12 +271,12 @@ const NavBar = () => {
   return (
     <>
     {/* //changed from w-full to w-screen 👇 */}
-      <div className="bg-black fixed w-screen top-0 left-0 z-50">   
+      <div ref={container} className="bg-black fixed w-screen top-0 left-0 z-50">   
         {/* MAIN NAVBAR */}
         <div className="bg-[#0B0E11] flex justify-between items-center h-24 border border-gray-800 rounded-3xl px-10">
 
           {/* LOGO */}
-          <div
+          <div id="dibya"
             className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text cursor-pointer"
             onClick={() => handleNav("home")}
           >
@@ -220,7 +284,7 @@ const NavBar = () => {
           </div>
 
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex gap-7 text-xl font-semibold text-gray-500">
+          <div id="navText" className="hidden md:flex gap-7 text-xl font-semibold text-gray-500">
             <NavItem text="Home" onClick={() => handleNav("home")} />
             <NavItem text="About me" onClick={() => handleNav("about")} />
             <NavItem text="Skills" onClick={() => handleNav("skill")} />
@@ -243,7 +307,7 @@ const NavBar = () => {
           </div>
 
           {/* MOBILE HAMBURGER */}
-          <div className="md:hidden text-white">
+          <div id="hamburger" className="md:hidden text-white">
             {menuOpen ? (
               <X size={32} onClick={() => setMenuOpen(false)} />
             ) : (
@@ -254,7 +318,7 @@ const NavBar = () => {
 
         {/* MOBILE MENU */}
         {menuOpen && (
-          <div className="md:hidden bg-[#0B0E11] border border-gray-800 rounded-2xl mx-5 mt-2 p-6 flex flex-col gap-6 text-lg text-gray-400">
+          <div   className="md:hidden bg-[#0B0E11] border border-gray-800 rounded-2xl mx-5 mt-2 p-6 flex flex-col gap-6 text-lg text-gray-400">
             <MobileItem text="Home" onClick={() => handleNav("home")} />
             <MobileItem text="About me" onClick={() => handleNav("about")} />
             <MobileItem text="Skills" onClick={() => handleNav("skill")} />

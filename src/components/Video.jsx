@@ -4,6 +4,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import CommentCard from "../Cards/CommentCard";
 import { Github, SquareArrowOutUpRight, ThumbsDown, ThumbsUp } from "lucide-react";
 const Video=()=>{
+const[like,setLike]=useState(false);
+const[disLike,setDisLike]=useState(false);
+
+
+
     const {id}=useParams();
     const {pid}=useParams();
     // console.log(id);
@@ -76,8 +81,8 @@ projectContent();
                         <div className="flex gap-5 p-2 justify-center items-center ">
                            <Link to={github}> <div className="rounded-full bg-[#0C3D42] h-10 w-10 flex justify-center items-center">  <Github className="text-[#02E6FF] text-center" /></div></Link>
                              <Link to={lievLink} >  <div className="rounded-full bg-[#2D1F42] h-10 w-10 flex justify-center items-center "> <SquareArrowOutUpRight className="text-[#A953F8]" /></div></Link> 
-                            <div className=" overflow-hidden"> <ThumbsUp className=" " /></div>
-                            <div> <ThumbsDown /></div>
+                            {like==true?(<div className="p-3 rounded-full bg-green-600 text-black cursor-pointer overflow-hidden flex gap-1 justify-center items-center" onClick={()=>{setLike(!like);setDisLike(false)}}> <ThumbsUp className=" " />{like}</div>):(<div className=" cursor-pointer overflow-hidden flex gap-1 justify-center items-center"  onClick={()=>{setLike(!like);setDisLike(false)}} > <ThumbsUp className=" " /></div>)}
+                            {disLike==true?(<div className="rounded-full p-3 bg-red-600 text-black flex justify-center items-center gap-1"  onClick={()=>{setDisLike(!disLike);setLike(false)}}> <ThumbsDown /></div>):(<div className="flex justify-center items-center gap-1 " onClick={()=>{setDisLike(!disLike);setLike(false)}}> <ThumbsDown /></div>)}
                         </div>
                      </div>
                     

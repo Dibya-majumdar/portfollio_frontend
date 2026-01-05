@@ -1,7 +1,14 @@
 import CircularProgress from "./CircularProgress";
 import SkillBar from "./SkillBar";
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const SkillsCards=({dibya})=>{
+     
+
+
     return(
         <>
         <div className="transition hover:scale-105 shadow-[0_0_30px_rgba(59,130,246,0.8)] rounded-3xl w-[18rem]  h-96 m-5 bg-[#0F1215] p-5 text-center border border-gray-800 outline-none ">
