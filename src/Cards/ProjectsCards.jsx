@@ -4,6 +4,7 @@ import { SquareArrowOutUpRight } from 'lucide-react';
 import { Video } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { FRONTEND_BASE_URL } from "../utils/constant";
 
 
 const ProjectsCards=({argument})=>{
@@ -28,7 +29,7 @@ const ProjectsCards=({argument})=>{
             <div className="flex  gap-3 my-5 ml-2 ">
                 <Link to={argument.github}> <div className="rounded-full bg-[#0C3D42] h-10 w-10 flex justify-center items-center">  <Github className="text-[#02E6FF] text-center" /></div> </Link>
              <Link to={argument.liveLink}>  <div className="rounded-full bg-[#2D1F42] h-10 w-10 flex justify-center items-center "> <SquareArrowOutUpRight className="text-[#A953F8]" /></div></Link> 
-            <div className="rounded-full bg-[#3E0F31] h-10 w-10 flex justify-center items-center" onClick={()=>navigate(`http://localhost:3001/projects/video/${argument.video?._id}/${argument.id}`)}> <Video className="text-[#FF01AF]" /></div> 
+            <div className="rounded-full bg-[#3E0F31] h-10 w-10 flex justify-center items-center" onClick={()=>navigate(`${FRONTEND_BASE_URL}projects/video/${argument.video?._id}/${argument.id}`)}> <Video className="text-[#FF01AF]" /></div> 
                
             </div>
         </div>

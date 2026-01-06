@@ -22,7 +22,7 @@ const[disLike,setDisLike]=useState(false);
     const[lievLink,setLiveLink]=useState("");
 const projectContent=async()=>{
     try{
-         const projectData=await axios.get(`http://localhost:3000/projectsWithoutAuth/${pid}`,{withCredentials:true});
+         const projectData=await axios.get(`${BASE_URL}projectsWithoutAuth/${pid}`,{withCredentials:true});
         console.log(projectData.data[0]);
         setTitle(projectData.data[0].title);
         setGithub(projectData.data[0].github);
@@ -35,7 +35,7 @@ const projectContent=async()=>{
 
 const handlecomment=async()=>{
     try{
-        const data=await axios.post(`http://localhost:3000/video/comments/${id}`,{comment:addComment},{withCredentials:true});
+        const data=await axios.post(`${BASE_URL}video/comments/${id}`,{comment:addComment},{withCredentials:true});
         setChange(!change);
 
     }catch(err){
@@ -67,7 +67,8 @@ projectContent();
 
     return(
         <>
-        {id== "undefined" ? (<div className="text-white font-bold text-2xl pt-28  w-full bg-black lg:flex justify-center  sm:w-96 ">Video will come. so pls Go back for now!</div>):
+        
+        {id== "undefined" ? ( <div className="bg-black h-screen w-full "><div className="text-white font-bold text-2xl pt-28  w-full bg-black flex justify-center items-center  ">The video hasn’t been uploaded yet. Please go back for now — we’ll update it soon!</div></div>):
         (<div className="text-white bg-black pt-28 lg:h-screen h-full w-full">
             <div className="lg:flex gap-2  h-full">
 
@@ -112,6 +113,8 @@ projectContent();
             </div>
            
         </div>)}
+
+     
         </>
     )
 }

@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BASE_URL } from "../utils/constant";
+import ProjectsCardShimmer from "../Cards/ProjectsCardShimmer";
 
 const Projects=()=>{
     const [projectData,setProjectData]=useState([]);
@@ -113,7 +114,9 @@ callingApi();
             </div>
             <div id="projectText" className="text-center text-gray-400 text-sm sm:text-lg md:text-2xl mt-3"><p>A showcase of my work spanning full-stack development <br></br> web and AI</p></div>
             <div className=" bg-black flex gap-14 pt-6  flex-wrap justify-center ">
-                { projectData.length!=0 &&(
+              {/* experiment */}
+
+                { projectData.length!=0 ?(
 projectData.map((val )=><div className="projectCard"> <ProjectsCards   argument={{
      id:val._id,
      title:val.title,
@@ -124,7 +127,12 @@ projectData.map((val )=><div className="projectCard"> <ProjectsCards   argument=
      video:val.video,
      techTags:val.usedTechs.length === 1 && val.usedTechs[0].includes(",")? val.usedTechs[0].split(",").map(t => t.trim()): val.usedTechs  
 }}  key={val._id}/></div>)
-               ) }
+               ):(<div> 
+                <div className="text-white flex justify-center items-center pb-2">Actually i am using Render for backend so it takes first 40 to 50s to load.so pls wait ! </div>
+                <div className="flex flex-wrap">    <ProjectsCardShimmer/>
+ <ProjectsCardShimmer/>
+ <ProjectsCardShimmer/></div>
+            </div>) }
 
  </div>
 </div>

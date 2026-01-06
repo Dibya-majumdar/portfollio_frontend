@@ -20,7 +20,7 @@ const EditProjectPage=()=>{
    
     const apiFetch=async()=>{
         try{
-            const data=await axios.get(`http://localhost:3000/projects/${id}`,{withCredentials:true});
+            const data=await axios.get(`${BASE_URL}projects/${id}`,{withCredentials:true});
         console.log(data.status);
           setApiData(data.data);
       console.log(apiData);    //why it is showing [] ?after doing setApiData[....]

@@ -5,12 +5,13 @@ import myStore from "./Stores/mystore";
 import axios from "axios";
 import { logInUser } from "./Stores/logInSlice";
 import { useEffect } from "react";
+import { BASE_URL } from "./utils/constant";
 
 const Body=()=>{
     const dispatch=useDispatch()
     const userCheck=async()=>{
         try{
-               const data=await axios.get("http://localhost:3000/user",{withCredentials:true});
+               const data=await axios.get(`${BASE_URL}user`,{withCredentials:true});
                  dispatch(logInUser("Logout")); 
         }catch(err){
             console.log(err.message);
