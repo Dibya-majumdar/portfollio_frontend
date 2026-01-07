@@ -128,7 +128,7 @@ projectData.map((val )=><div className="projectCard"> <ProjectsCards   argument=
      techTags:val.usedTechs.length === 1 && val.usedTechs[0].includes(",")? val.usedTechs[0].split(",").map(t => t.trim()): val.usedTechs  
 }}  key={val._id}/></div>)
                ):(<div> 
-                <div className="text-white flex justify-center items-center pb-2">Actually i am using Render for backend so it takes first 40 to 50s to load.so pls wait ! </div>
+                <div className="text-white flex justify-center items-center pb-2">Actually i am using Render(backend deployment website) for backend so it takes first 40 to 50s to load.so pls wait ! </div>
                 <div className="flex flex-wrap">    <ProjectsCardShimmer/>
  <ProjectsCardShimmer/>
  <ProjectsCardShimmer/></div>

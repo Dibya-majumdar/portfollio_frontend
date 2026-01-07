@@ -63,6 +63,42 @@ projectContent();
 
 
 // https://res.cloudinary.com/dhrew4lp8/video/upload/v1767355588/Screen_Recording_2025-03-03_234511_gyvh2r.mp4
+const isYouTubeUrl = (url) => {
+  return url.includes("youtube.com") || url.includes("youtu.be");
+};
+
+const getYouTubeEmbedUrl = (url) => {
+  const videoId = url.includes("youtu.be")
+    ? url.split("youtu.be/")[1]
+    : url.split("v=")[1]?.split("&")[0];
+
+  return `https://www.youtube.com/embed/${videoId}`;
+};
+
+const VideoPlayer = ({ videoUrl }) => {
+  if (!videoUrl) return null;
+
+  if (isYouTubeUrl(videoUrl)) {
+    return (
+      <iframe
+        className="w-full h-full rounded-xl"
+        src={getYouTubeEmbedUrl(videoUrl)}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    );
+  }
+
+  return (
+    <video
+      className="w-full h-full rounded-xl"
+      src={videoUrl}
+      controls
+    />
+  );
+};
 
 
     return(
@@ -76,7 +112,7 @@ projectContent();
 
                 <div className="lg:w-full sm:w-full  md:ml-20 rounded-2xl p-2 ">   {/*lg:w-[52%]*/}
                      <div className="lg:w-full h-[30rem] bg-[#0F1215] border border-gray-800 rounded-2xl p-2">
-                       {videoUrl !="" ? (<video className="h-full w-full rounded-xl" src={videoUrl} controls/>) :(<div className="text-white font-bold text-2xl">Video will come. so pls Go back for now!</div>)}
+                       {videoUrl !="" ? (<VideoPlayer videoUrl={videoUrl} />) :(<div className="w-full xsm:w-[29rem] bg-[#0F1215] rounded-[2rem] pt-2 pl-2 pr-2 border border-gray-800 animate-pulse"></div>)}
                         </div>
                  <div className="flex justify-between mr-10 w-full   ">       {/*  mr-10 bg-green-500 */}
                          <div className="mt-2 text-3xl  pl-2 font-bold">{title} </div>
