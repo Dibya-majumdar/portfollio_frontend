@@ -59,7 +59,7 @@ setCommentsArray(data?.data?.Comments);
 useEffect(()=>{
 videoFunc();
 projectContent();
-},[change])
+},[])//Error -do not put change state variable in the dependency array
 
 
 // https://res.cloudinary.com/dhrew4lp8/video/upload/v1767355588/Screen_Recording_2025-03-03_234511_gyvh2r.mp4
