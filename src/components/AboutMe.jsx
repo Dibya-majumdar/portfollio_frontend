@@ -116,7 +116,7 @@ useGSAP(() => {
            <div className="flex flex-col md:flex-row mx-2 md:mx-28">
             <div id="aboutText3" className=" w-full  lg:w-[60%] text-sm sm:text-lg md:text-2xl mt-6 md:mt-0  text-gray-400  text-center leading-[1.8] md:pl-5  lg:pl-20 flex justify-center items-center">Hi, I’m Dibya, a Computer Science Engineering student and a Full Stack MERN Developer who enjoys building scalable, real-world web applications. I work across the frontend, backend, and databases, with hands-on experience in HTML, CSS, JavaScript, React.js, Node.js, Express.js, MongoDB, and MySQL.
 I focus on creating clean user interfaces and reliable backend APIs. Apart from webdev i am also exploring AI ML & Deep learning </div>
-            <div id="aboutImg" className=" w-full  md:w-[40%]  flex justify-center items-center "><img className="shadow-[0_0_60px_rgba(59,130,246,0.8)] mx-5   h-[25rem] rounded-3xl mt-10 animate-float" src="https://i.ibb.co/BHH1VRyc/01b3ce52-6aa0-4a9b-857c-1679f16ef907.png"></img></div>
+            <div id="aboutImg" className=" w-full  md:w-[40%]  flex justify-center items-center "><img className="shadow-[0_0_60px_rgba(59,130,246,0.8)] mx-5   h-[25rem] rounded-3xl mt-10 animate-float" src="https://i.ibb.co/7NLb4VqH/about.png"></img></div>
            </div>
            
        
